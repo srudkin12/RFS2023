@@ -1,0 +1,1246 @@
+# These codes were made as a solution for the session. First we have the datasaurus dozen
+
+# Build the bullseye dataset as a subset (Note that we use bullseye anywhere we want to identify the data)
+
+bullseye<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$bullseye_x,datasaurus_dozen_wide$bullseye_y)) # This creates a dataset with just the bullseye values
+
+names(bullseye)<-c("x","y") # This simplifies the name of the dataset
+
+gbullseye <-ggplot(bullseye,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gbullseye # Plot the ggplot object
+
+ggsave("bullseyescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+bullseyex<-as.data.frame(bullseye$x)
+
+# Now we create the TDABM plot
+
+bmbullseye<-BallMapper(bullseye,bullseyex,20)
+ColorIgraphPlot(bmbullseye)
+
+png("bullseyebm20.png")
+ColorIgraphPlot(bmbullseye)
+dev.off()
+
+# Build the circle dataset as a subset (Note that we use circle anywhere we want to identify the data)
+
+circle<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$circle_x,datasaurus_dozen_wide$circle_y)) # This creates a dataset with just the circle values
+
+names(circle)<-c("x","y") # This simplifies the name of the dataset
+
+gcircle <-ggplot(circle,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gcircle # Plot the ggplot object
+
+ggsave("circlescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+circlex<-as.data.frame(circle$x)
+
+# Now we create the TDABM plot
+
+bmcircle<-BallMapper(circle,circlex,20)
+ColorIgraphPlot(bmcircle)
+
+png("circlebm20.png")
+ColorIgraphPlot(bmcircle)
+dev.off()
+
+# Build the dino dataset as a subset (Note that we use dino anywhere we want to identify the data)
+
+dino<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$dino_x,datasaurus_dozen_wide$dino_y)) # This creates a dataset with just the dino values
+
+names(dino)<-c("x","y") # This simplifies the name of the dataset
+
+gdino <-ggplot(dino,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gdino # Plot the ggplot object
+
+ggsave("dinoscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+dinox<-as.data.frame(dino$x)
+
+# Now we create the TDABM plot
+
+bmdino<-BallMapper(dino,dinox,20)
+ColorIgraphPlot(bmdino)
+
+png("dinobm20.png")
+ColorIgraphPlot(bmdino)
+dev.off()
+
+# Build the h_lines dataset as a subset (Note that we use h_lines anywhere we want to identify the data)
+
+h_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$h_lines_x,datasaurus_dozen_wide$h_lines_y)) # This creates a dataset with just the h_lines values
+
+names(h_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gh_lines <-ggplot(h_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gh_lines # Plot the ggplot object
+
+ggsave("h_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+h_linesx<-as.data.frame(h_lines$x)
+
+# Now we create the TDABM plot
+
+bmh_lines<-BallMapper(h_lines,h_linesx,20)
+ColorIgraphPlot(bmh_lines)
+
+png("h_linesbm20.png")
+ColorIgraphPlot(bmh_lines)
+dev.off()
+
+# Build the high_lines dataset as a subset (Note that we use high_lines anywhere we want to identify the data)
+
+high_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$high_lines_x,datasaurus_dozen_wide$high_lines_y)) # This creates a dataset with just the high_lines values
+
+names(high_lines)<-c("x","y") # This simplifies the name of the dataset
+
+ghigh_lines <-ggplot(high_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+ghigh_lines # Plot the ggplot object
+
+ggsave("high_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+high_linesx<-as.data.frame(high_lines$x)
+
+# Now we create the TDABM plot
+
+bmhigh_lines<-BallMapper(high_lines,high_linesx,20)
+ColorIgraphPlot(bmhigh_lines)
+
+png("high_linesbm20.png")
+ColorIgraphPlot(bmhigh_lines)
+dev.off()
+
+# Build the slant_down dataset as a subset (Note that we use slant_down anywhere we want to identify the data)
+
+slant_down<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_down_x,datasaurus_dozen_wide$slant_down_y)) # This creates a dataset with just the slant_down values
+
+names(slant_down)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_down <-ggplot(slant_down,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_down # Plot the ggplot object
+
+ggsave("slant_downscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_downx<-as.data.frame(slant_down$x)
+
+# Now we create the TDABM plot
+
+bmslant_down<-BallMapper(slant_down,slant_downx,20)
+ColorIgraphPlot(bmslant_down)
+
+png("slant_downbm20.png")
+ColorIgraphPlot(bmslant_down)
+dev.off()
+
+# Build the slant_up dataset as a subset (Note that we use slant_up anywhere we want to identify the data)
+
+slant_up<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_up_x,datasaurus_dozen_wide$slant_up_y)) # This creates a dataset with just the slant_up values
+
+names(slant_up)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_up <-ggplot(slant_up,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_up # Plot the ggplot object
+
+ggsave("slant_upscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_upx<-as.data.frame(slant_up$x)
+
+# Now we create the TDABM plot
+
+bmslant_up<-BallMapper(slant_up,slant_upx,20)
+ColorIgraphPlot(bmslant_up)
+
+png("slant_upbm20.png")
+ColorIgraphPlot(bmslant_up)
+dev.off()
+
+# Build the star dataset as a subset (Note that we use star anywhere we want to identify the data)
+
+star<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$star_x,datasaurus_dozen_wide$star_y)) # This creates a dataset with just the star values
+
+names(star)<-c("x","y") # This simplifies the name of the dataset
+
+gstar <-ggplot(star,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gstar # Plot the ggplot object
+
+ggsave("starscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+starx<-as.data.frame(star$x)
+
+# Now we create the TDABM plot
+
+bmstar<-BallMapper(star,starx,20)
+ColorIgraphPlot(bmstar)
+
+png("starbm20.png")
+ColorIgraphPlot(bmstar)
+dev.off()
+
+# Build the v_lines dataset as a subset (Note that we use v_lines anywhere we want to identify the data)
+
+v_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$v_lines_x,datasaurus_dozen_wide$v_lines_y)) # This creates a dataset with just the v_lines values
+
+names(v_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gv_lines <-ggplot(v_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gv_lines # Plot the ggplot object
+
+ggsave("v_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+v_linesx<-as.data.frame(v_lines$x)
+
+# Now we create the TDABM plot
+
+bmv_lines<-BallMapper(v_lines,v_linesx,20)
+ColorIgraphPlot(bmv_lines)
+
+png("v_linesbm20.png")
+ColorIgraphPlot(bmv_lines)
+dev.off()
+
+# Build the wide_lines dataset as a subset (Note that we use wide_lines anywhere we want to identify the data)
+
+wide_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$wide_lines_x,datasaurus_dozen_wide$wide_lines_y)) # This creates a dataset with just the wide_lines values
+
+names(wide_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gwide_lines <-ggplot(wide_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gwide_lines # Plot the ggplot object
+
+ggsave("wide_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+wide_linesx<-as.data.frame(wide_lines$x)
+
+# Now we create the TDABM plot
+
+bmwide_lines<-BallMapper(wide_lines,wide_linesx,20)
+ColorIgraphPlot(bmwide_lines)
+
+png("wide_linesbm20.png")
+ColorIgraphPlot(bmwide_lines)
+dev.off()
+
+# Build the x_shape dataset as a subset (Note that we use x_shape anywhere we want to identify the data)
+
+x_shape<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$x_shape_x,datasaurus_dozen_wide$x_shape_y)) # This creates a dataset with just the x_shape values
+
+names(x_shape)<-c("x","y") # This simplifies the name of the dataset
+
+gx_shape <-ggplot(x_shape,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gx_shape # Plot the ggplot object
+
+ggsave("x_shapescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+x_shapex<-as.data.frame(x_shape$x)
+
+# Now we create the TDABM plot
+
+bmx_shape<-BallMapper(x_shape,x_shapex,20)
+ColorIgraphPlot(bmx_shape)
+
+png("x_shapebm20.png")
+ColorIgraphPlot(bmx_shape)
+dev.off()
+
+
+#########################################
+# We repeat the exercise with radius 30 #
+#########################################
+
+# These codes were made as a solution for the session. First we have the datasaurus dozen
+
+# Build the away dataset as a subset (Note that we use away anywhere we want to identify the data)
+
+away<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$away_x,datasaurus_dozen_wide$away_y)) # This creates a dataset with just the away values
+
+names(away)<-c("x","y") # This simplifies the name of the dataset
+
+gaway <-ggplot(away,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gaway # Plot the ggplot object
+
+ggsave("awayscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+awayx<-as.data.frame(away$x)
+
+# Now we create the TDABM plot
+
+bmaway<-BallMapper(away,awayx,30)
+ColorIgraphPlot(bmaway)
+
+png("awaybm30.png")
+ColorIgraphPlot(bmaway)
+dev.off()
+
+
+
+
+# Build the bullseye dataset as a subset (Note that we use bullseye anywhere we want to identify the data)
+
+bullseye<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$bullseye_x,datasaurus_dozen_wide$bullseye_y)) # This creates a dataset with just the bullseye values
+
+names(bullseye)<-c("x","y") # This simplifies the name of the dataset
+
+gbullseye <-ggplot(bullseye,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gbullseye # Plot the ggplot object
+
+ggsave("bullseyescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+bullseyex<-as.data.frame(bullseye$x)
+
+# Now we create the TDABM plot
+
+bmbullseye<-BallMapper(bullseye,bullseyex,30)
+ColorIgraphPlot(bmbullseye)
+
+png("bullseyebm30.png")
+ColorIgraphPlot(bmbullseye)
+dev.off()
+
+# Build the circle dataset as a subset (Note that we use circle anywhere we want to identify the data)
+
+circle<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$circle_x,datasaurus_dozen_wide$circle_y)) # This creates a dataset with just the circle values
+
+names(circle)<-c("x","y") # This simplifies the name of the dataset
+
+gcircle <-ggplot(circle,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gcircle # Plot the ggplot object
+
+ggsave("circlescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+circlex<-as.data.frame(circle$x)
+
+# Now we create the TDABM plot
+
+bmcircle<-BallMapper(circle,circlex,30)
+ColorIgraphPlot(bmcircle)
+
+png("circlebm30.png")
+ColorIgraphPlot(bmcircle)
+dev.off()
+
+# Build the dino dataset as a subset (Note that we use dino anywhere we want to identify the data)
+
+dino<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$dino_x,datasaurus_dozen_wide$dino_y)) # This creates a dataset with just the dino values
+
+names(dino)<-c("x","y") # This simplifies the name of the dataset
+
+gdino <-ggplot(dino,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gdino # Plot the ggplot object
+
+ggsave("dinoscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+dinox<-as.data.frame(dino$x)
+
+# Now we create the TDABM plot
+
+bmdino<-BallMapper(dino,dinox,30)
+ColorIgraphPlot(bmdino)
+
+png("dinobm30.png")
+ColorIgraphPlot(bmdino)
+dev.off()
+
+# Build the h_lines dataset as a subset (Note that we use h_lines anywhere we want to identify the data)
+
+h_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$h_lines_x,datasaurus_dozen_wide$h_lines_y)) # This creates a dataset with just the h_lines values
+
+names(h_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gh_lines <-ggplot(h_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gh_lines # Plot the ggplot object
+
+ggsave("h_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+h_linesx<-as.data.frame(h_lines$x)
+
+# Now we create the TDABM plot
+
+bmh_lines<-BallMapper(h_lines,h_linesx,30)
+ColorIgraphPlot(bmh_lines)
+
+png("h_linesbm30.png")
+ColorIgraphPlot(bmh_lines)
+dev.off()
+
+# Build the high_lines dataset as a subset (Note that we use high_lines anywhere we want to identify the data)
+
+high_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$high_lines_x,datasaurus_dozen_wide$high_lines_y)) # This creates a dataset with just the high_lines values
+
+names(high_lines)<-c("x","y") # This simplifies the name of the dataset
+
+ghigh_lines <-ggplot(high_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+ghigh_lines # Plot the ggplot object
+
+ggsave("high_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+high_linesx<-as.data.frame(high_lines$x)
+
+# Now we create the TDABM plot
+
+bmhigh_lines<-BallMapper(high_lines,high_linesx,30)
+ColorIgraphPlot(bmhigh_lines)
+
+png("high_linesbm30.png")
+ColorIgraphPlot(bmhigh_lines)
+dev.off()
+
+# Build the slant_down dataset as a subset (Note that we use slant_down anywhere we want to identify the data)
+
+slant_down<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_down_x,datasaurus_dozen_wide$slant_down_y)) # This creates a dataset with just the slant_down values
+
+names(slant_down)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_down <-ggplot(slant_down,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_down # Plot the ggplot object
+
+ggsave("slant_downscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_downx<-as.data.frame(slant_down$x)
+
+# Now we create the TDABM plot
+
+bmslant_down<-BallMapper(slant_down,slant_downx,30)
+ColorIgraphPlot(bmslant_down)
+
+png("slant_downbm30.png")
+ColorIgraphPlot(bmslant_down)
+dev.off()
+
+# Build the slant_up dataset as a subset (Note that we use slant_up anywhere we want to identify the data)
+
+slant_up<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_up_x,datasaurus_dozen_wide$slant_up_y)) # This creates a dataset with just the slant_up values
+
+names(slant_up)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_up <-ggplot(slant_up,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_up # Plot the ggplot object
+
+ggsave("slant_upscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_upx<-as.data.frame(slant_up$x)
+
+# Now we create the TDABM plot
+
+bmslant_up<-BallMapper(slant_up,slant_upx,30)
+ColorIgraphPlot(bmslant_up)
+
+png("slant_upbm30.png")
+ColorIgraphPlot(bmslant_up)
+dev.off()
+
+# Build the star dataset as a subset (Note that we use star anywhere we want to identify the data)
+
+star<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$star_x,datasaurus_dozen_wide$star_y)) # This creates a dataset with just the star values
+
+names(star)<-c("x","y") # This simplifies the name of the dataset
+
+gstar <-ggplot(star,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gstar # Plot the ggplot object
+
+ggsave("starscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+starx<-as.data.frame(star$x)
+
+# Now we create the TDABM plot
+
+bmstar<-BallMapper(star,starx,30)
+ColorIgraphPlot(bmstar)
+
+png("starbm30.png")
+ColorIgraphPlot(bmstar)
+dev.off()
+
+# Build the v_lines dataset as a subset (Note that we use v_lines anywhere we want to identify the data)
+
+v_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$v_lines_x,datasaurus_dozen_wide$v_lines_y)) # This creates a dataset with just the v_lines values
+
+names(v_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gv_lines <-ggplot(v_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gv_lines # Plot the ggplot object
+
+ggsave("v_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+v_linesx<-as.data.frame(v_lines$x)
+
+# Now we create the TDABM plot
+
+bmv_lines<-BallMapper(v_lines,v_linesx,30)
+ColorIgraphPlot(bmv_lines)
+
+png("v_linesbm30.png")
+ColorIgraphPlot(bmv_lines)
+dev.off()
+
+# Build the wide_lines dataset as a subset (Note that we use wide_lines anywhere we want to identify the data)
+
+wide_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$wide_lines_x,datasaurus_dozen_wide$wide_lines_y)) # This creates a dataset with just the wide_lines values
+
+names(wide_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gwide_lines <-ggplot(wide_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gwide_lines # Plot the ggplot object
+
+ggsave("wide_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+wide_linesx<-as.data.frame(wide_lines$x)
+
+# Now we create the TDABM plot
+
+bmwide_lines<-BallMapper(wide_lines,wide_linesx,30)
+ColorIgraphPlot(bmwide_lines)
+
+png("wide_linesbm30.png")
+ColorIgraphPlot(bmwide_lines)
+dev.off()
+
+# Build the x_shape dataset as a subset (Note that we use x_shape anywhere we want to identify the data)
+
+x_shape<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$x_shape_x,datasaurus_dozen_wide$x_shape_y)) # This creates a dataset with just the x_shape values
+
+names(x_shape)<-c("x","y") # This simplifies the name of the dataset
+
+gx_shape <-ggplot(x_shape,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gx_shape # Plot the ggplot object
+
+ggsave("x_shapescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+x_shapex<-as.data.frame(x_shape$x)
+
+# Now we create the TDABM plot
+
+bmx_shape<-BallMapper(x_shape,x_shapex,30)
+ColorIgraphPlot(bmx_shape)
+
+png("x_shapebm30.png")
+ColorIgraphPlot(bmx_shape)
+dev.off()
+
+###########################################
+# Finally we try the smaller radius of 10 #
+###########################################
+
+# These codes were made as a solution for the session. First we have the datasaurus dozen
+
+# Build the away dataset as a subset (Note that we use away anywhere we want to identify the data)
+
+away<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$away_x,datasaurus_dozen_wide$away_y)) # This creates a dataset with just the away values
+
+names(away)<-c("x","y") # This simplifies the name of the dataset
+
+gaway <-ggplot(away,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gaway # Plot the ggplot object
+
+ggsave("awayscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+awayx<-as.data.frame(away$x)
+
+# Now we create the TDABM plot
+
+bmaway<-BallMapper(away,awayx,10)
+ColorIgraphPlot(bmaway)
+
+png("awaybm10.png")
+ColorIgraphPlot(bmaway)
+dev.off()
+
+
+
+
+# Build the bullseye dataset as a subset (Note that we use bullseye anywhere we want to identify the data)
+
+bullseye<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$bullseye_x,datasaurus_dozen_wide$bullseye_y)) # This creates a dataset with just the bullseye values
+
+names(bullseye)<-c("x","y") # This simplifies the name of the dataset
+
+gbullseye <-ggplot(bullseye,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gbullseye # Plot the ggplot object
+
+ggsave("bullseyescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+bullseyex<-as.data.frame(bullseye$x)
+
+# Now we create the TDABM plot
+
+bmbullseye<-BallMapper(bullseye,bullseyex,10)
+ColorIgraphPlot(bmbullseye)
+
+png("bullseyebm10.png")
+ColorIgraphPlot(bmbullseye)
+dev.off()
+
+# Build the circle dataset as a subset (Note that we use circle anywhere we want to identify the data)
+
+circle<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$circle_x,datasaurus_dozen_wide$circle_y)) # This creates a dataset with just the circle values
+
+names(circle)<-c("x","y") # This simplifies the name of the dataset
+
+gcircle <-ggplot(circle,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gcircle # Plot the ggplot object
+
+ggsave("circlescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+circlex<-as.data.frame(circle$x)
+
+# Now we create the TDABM plot
+
+bmcircle<-BallMapper(circle,circlex,10)
+ColorIgraphPlot(bmcircle)
+
+png("circlebm10.png")
+ColorIgraphPlot(bmcircle)
+dev.off()
+
+# Build the dino dataset as a subset (Note that we use dino anywhere we want to identify the data)
+
+dino<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$dino_x,datasaurus_dozen_wide$dino_y)) # This creates a dataset with just the dino values
+
+names(dino)<-c("x","y") # This simplifies the name of the dataset
+
+gdino <-ggplot(dino,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gdino # Plot the ggplot object
+
+ggsave("dinoscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+dinox<-as.data.frame(dino$x)
+
+# Now we create the TDABM plot
+
+bmdino<-BallMapper(dino,dinox,10)
+ColorIgraphPlot(bmdino)
+
+png("dinobm10.png")
+ColorIgraphPlot(bmdino)
+dev.off()
+
+# Build the h_lines dataset as a subset (Note that we use h_lines anywhere we want to identify the data)
+
+h_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$h_lines_x,datasaurus_dozen_wide$h_lines_y)) # This creates a dataset with just the h_lines values
+
+names(h_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gh_lines <-ggplot(h_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gh_lines # Plot the ggplot object
+
+ggsave("h_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+h_linesx<-as.data.frame(h_lines$x)
+
+# Now we create the TDABM plot
+
+bmh_lines<-BallMapper(h_lines,h_linesx,10)
+ColorIgraphPlot(bmh_lines)
+
+png("h_linesbm10.png")
+ColorIgraphPlot(bmh_lines)
+dev.off()
+
+# Build the high_lines dataset as a subset (Note that we use high_lines anywhere we want to identify the data)
+
+high_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$high_lines_x,datasaurus_dozen_wide$high_lines_y)) # This creates a dataset with just the high_lines values
+
+names(high_lines)<-c("x","y") # This simplifies the name of the dataset
+
+ghigh_lines <-ggplot(high_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+ghigh_lines # Plot the ggplot object
+
+ggsave("high_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+high_linesx<-as.data.frame(high_lines$x)
+
+# Now we create the TDABM plot
+
+bmhigh_lines<-BallMapper(high_lines,high_linesx,10)
+ColorIgraphPlot(bmhigh_lines)
+
+png("high_linesbm10.png")
+ColorIgraphPlot(bmhigh_lines)
+dev.off()
+
+# Build the slant_down dataset as a subset (Note that we use slant_down anywhere we want to identify the data)
+
+slant_down<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_down_x,datasaurus_dozen_wide$slant_down_y)) # This creates a dataset with just the slant_down values
+
+names(slant_down)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_down <-ggplot(slant_down,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_down # Plot the ggplot object
+
+ggsave("slant_downscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_downx<-as.data.frame(slant_down$x)
+
+# Now we create the TDABM plot
+
+bmslant_down<-BallMapper(slant_down,slant_downx,10)
+ColorIgraphPlot(bmslant_down)
+
+png("slant_downbm10.png")
+ColorIgraphPlot(bmslant_down)
+dev.off()
+
+# Build the slant_up dataset as a subset (Note that we use slant_up anywhere we want to identify the data)
+
+slant_up<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$slant_up_x,datasaurus_dozen_wide$slant_up_y)) # This creates a dataset with just the slant_up values
+
+names(slant_up)<-c("x","y") # This simplifies the name of the dataset
+
+gslant_up <-ggplot(slant_up,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gslant_up # Plot the ggplot object
+
+ggsave("slant_upscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+slant_upx<-as.data.frame(slant_up$x)
+
+# Now we create the TDABM plot
+
+bmslant_up<-BallMapper(slant_up,slant_upx,10)
+ColorIgraphPlot(bmslant_up)
+
+png("slant_upbm10.png")
+ColorIgraphPlot(bmslant_up)
+dev.off()
+
+# Build the star dataset as a subset (Note that we use star anywhere we want to identify the data)
+
+star<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$star_x,datasaurus_dozen_wide$star_y)) # This creates a dataset with just the star values
+
+names(star)<-c("x","y") # This simplifies the name of the dataset
+
+gstar <-ggplot(star,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gstar # Plot the ggplot object
+
+ggsave("starscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+starx<-as.data.frame(star$x)
+
+# Now we create the TDABM plot
+
+bmstar<-BallMapper(star,starx,10)
+ColorIgraphPlot(bmstar)
+
+png("starbm10.png")
+ColorIgraphPlot(bmstar)
+dev.off()
+
+# Build the v_lines dataset as a subset (Note that we use v_lines anywhere we want to identify the data)
+
+v_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$v_lines_x,datasaurus_dozen_wide$v_lines_y)) # This creates a dataset with just the v_lines values
+
+names(v_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gv_lines <-ggplot(v_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gv_lines # Plot the ggplot object
+
+ggsave("v_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+v_linesx<-as.data.frame(v_lines$x)
+
+# Now we create the TDABM plot
+
+bmv_lines<-BallMapper(v_lines,v_linesx,10)
+ColorIgraphPlot(bmv_lines)
+
+png("v_linesbm10.png")
+ColorIgraphPlot(bmv_lines)
+dev.off()
+
+# Build the wide_lines dataset as a subset (Note that we use wide_lines anywhere we want to identify the data)
+
+wide_lines<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$wide_lines_x,datasaurus_dozen_wide$wide_lines_y)) # This creates a dataset with just the wide_lines values
+
+names(wide_lines)<-c("x","y") # This simplifies the name of the dataset
+
+gwide_lines <-ggplot(wide_lines,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gwide_lines # Plot the ggplot object
+
+ggsave("wide_linesscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+wide_linesx<-as.data.frame(wide_lines$x)
+
+# Now we create the TDABM plot
+
+bmwide_lines<-BallMapper(wide_lines,wide_linesx,10)
+ColorIgraphPlot(bmwide_lines)
+
+png("wide_linesbm10.png")
+ColorIgraphPlot(bmwide_lines)
+dev.off()
+
+# Build the x_shape dataset as a subset (Note that we use x_shape anywhere we want to identify the data)
+
+x_shape<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$x_shape_x,datasaurus_dozen_wide$x_shape_y)) # This creates a dataset with just the x_shape values
+
+names(x_shape)<-c("x","y") # This simplifies the name of the dataset
+
+gx_shape <-ggplot(x_shape,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gx_shape # Plot the ggplot object
+
+ggsave("x_shapescatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+x_shapex<-as.data.frame(x_shape$x)
+
+# Now we create the TDABM plot
+
+bmx_shape<-BallMapper(x_shape,x_shapex,10)
+ColorIgraphPlot(bmx_shape)
+
+png("x_shapebm10.png")
+ColorIgraphPlot(bmx_shape)
+dev.off()
+

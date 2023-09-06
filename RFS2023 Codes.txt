@@ -1,0 +1,197 @@
+# Code to accompany RFS2023 session
+
+# Code with # will not run. These are instructions or information
+
+# Download either R https://cran.r-project.org/ or R Studio (https://posit.co/download/rstudio-desktop/) in order to use this code. BallMapper is available in Python using PyBallMapper.
+
+# Set working directory
+
+setwd("C://rfs2023/") # This line must be changed to your working directory, or set using the menus in R
+
+# Load packages (The first time you use the packages you may need to use the install lines)
+
+# install.packages("BallMapper") # Only use this if you need to install. Remove the # at the start of the line to run.
+# install.packages("ggplot2") # Only use this if you need to install. Remove the # at the start of the line to run.
+# install.packages("datasauRus") # Only use this if you need to install. Remove the # at the start of the line to run.
+# install.packages("dplyr") # Only use this if you need to install. Remove the # at the start of the line to run.
+# install.packages("crypto2") # Only use this if you need to install. Remove the # at the start of the line to run.
+
+
+library(BallMapper)
+library(ggplot2)
+library(datasauRus) 
+library(dplyr)
+
+# First exercise is to verify the summary statistics in the datasauRus data. LINK: https://cran.r-project.org/web/packages/datasauRus/vignettes/Datasaurus.html
+
+if(requireNamespace("dplyr")){
+  suppressPackageStartupMessages(library(dplyr))
+  datasaurus_dozen %>% 
+    group_by(dataset) %>% 
+    summarize(
+      mean_x    = mean(x),
+      mean_y    = mean(y),
+      std_dev_x = sd(x),
+      std_dev_y = sd(y),
+      corr_x_y  = cor(x, y)
+    )
+}
+
+# Next let us plot the datasauRus data
+
+if(requireNamespace("ggplot2")){
+  library(ggplot2)
+  ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset))+
+    geom_point()+
+    theme_void()+
+    theme(legend.position = "none")+
+    facet_wrap(~dataset, ncol = 3)
+}
+
+# To make the TDABM we need to generate separate datasets
+
+head(datasaurus_dozen_wide) # This shows us the datasaurus data
+
+# Build the away dataset as a subset (Note that we use away anywhere we want to identify the data)
+
+away<-as.data.frame(cbind.data.frame(datasaurus_dozen_wide$away_x,datasaurus_dozen_wide$away_y)) # This creates a dataset with just the away values
+
+names(away)<-c("x","y") # This simplifies the name of the dataset
+
+gaway <-ggplot(away,aes(x=x,y=y))+
+ 
+  geom_hline(yintercept=0,color="black",lwd =1.5,linetype="solid")+
+  geom_vline(xintercept=0,color="black",lwd =1.5,linetype="solid")+
+   geom_point(color="blue",size=2) +
+  labs(x="X",y="Y") +
+  theme(axis.title.x = element_text(vjust=0,size=20),
+  axis.title.y = element_text(vjust=0,size=20),
+  axis.text = element_text(size=20),
+  panel.grid.major = element_line(color="gray10", linetype = "dashed",  size = .5),
+  panel.grid.minor = element_line(color="gray90", linetype = "dashed", size = .8))
+
+gaway # Plot the ggplot object
+
+ggsave("awayscatter.png",width=6,height=6) # Save the ggplot
+
+# For TDABM we need the colour to be a dataframe
+
+awayx<-as.data.frame(away$x)
+
+# Now we create the TDABM plot
+
+bmaway<-BallMapper(away,awayx,20)
+ColorIgraphPlot(bmaway)
+
+png("awaybm20.png")
+ColorIgraphPlot(bmaway)
+dev.off()
+
+
+######
+######
+# For our multivariate example we will use cryptocurrency data
+######
+######
+
+library(crypto2)
+
+coins <- crypto_list(only_active=TRUE)
+
+coin_hist <- crypto_history(coins, limit=5, start_date="20170101", end_date="20221231", finalWait=FALSE)
+
+# View the head of the coin_hist
+
+head(coin_hist)
+
+# Convert the coin history to a data frame
+
+coinh<-as.data.frame(coin_hist)
+
+names(coinh)<-c("timestamp","id","slug","name","symbol","refcur","open","high","low","close","volume","market_cap","time_open","time_close","time_high","time_low")
+
+# Create a date variable
+
+coinh$date<-as.Date(substr(coinh$timestamp,1,10),format="%Y-%m-%d")
+
+# Table to show the coins
+
+table(coinh$symbol)
+
+# Smaller data frame
+
+coinh<-as.data.frame(cbind.data.frame(coinh$date,coinh$symbol,coinh$close))
+names(coinh)<-c("date","symbol","close")
+
+# This block of code loops to create a dataset ready for calculation of returns
+
+coins<-as.data.frame(table(coinh$symbol))
+names(coins)<-c("symbol","freq")
+
+ret001<-as.data.frame(matrix(nrow=max(coins$freq),ncol=6))
+
+for(i in 1:5){
+ a001<-coins$symbol[i]
+ temp<-subset(coinh,coinh$symbol==a001)
+ a002<-nrow(temp)
+ a003<-i+1
+ for(j in 2:a002){
+  a004<-j-1
+  ret001[j,1]<-coinh$date[j]
+  ret001[j,a003]<-100*(log(temp$close[j])-log(temp$close[a004]))
+ }
+}
+
+ret001<-ret001[-1,] # Drop first row as cannot calculate return
+
+names(ret001)<-c("date",as.character(coins$symbol))
+
+head(ret001) # View the data
+
+ret001$date<-as.Date(ret001$date,format="%d-%m-%Y",origin="01-01-1970") # Convert date
+ret001$pt<-seq(1:nrow(ret001)) # Point identifier to match TDABM output
+
+# Ball Mapper Data Frames
+
+ret002<-as.data.frame(ret001[,2:6]) # 5 coin returns as axes
+ret003<-as.data.frame(ret001[,2]) # BTC return as colour
+
+# Ball Mapper Plot
+
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("btcbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Points to Balls Function
+
+points_to_balls<-function(l){
+  a001<-length(l$landmarks)
+  a1<-matrix(0,nrow=a001,ncol=2)
+  a1<-as.data.frame(a1)
+  names(a1)<-c("pt","ball")
+  for(i in 1:a001){
+    a<-as.data.frame(l$points_covered_by_landmarks[i])
+    names(a)<-"pt"
+    a$ball<-i
+    a1<-rbind.data.frame(a1,a)
+   }
+  a1<-a1[2:nrow(a1),]
+  return(a1)
+}
+
+# Apply Points to Balls
+
+cbm01pb<-as.data.frame(points_to_balls(cbm01))
+names(cbm01pb)<-c("pt","ball")
+
+# Merge back to data using the pt field
+
+ret004<-merge(ret001,cbm01pb,by="pt")
+
+# Subsetting helps to focus on particular balls, e.g. ball 12
+
+ret00412<-subset(ret004,ret004$ball==12)
+

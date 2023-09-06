@@ -1,0 +1,122 @@
+# These codes provide the solutions to the Crypto Exercises
+
+# Move to LTC
+
+ret003<-as.data.frame(ret001[,3]) # LTC return as colour
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("ltcbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to NMC
+
+ret003<-as.data.frame(ret001[,4]) # NMC return as colour
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("nmcbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to PPC
+
+ret003<-as.data.frame(ret001[,5]) # PPC return as colour
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("ppcbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to TRC
+
+ret003<-as.data.frame(ret001[,6]) # TRC return as colour
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("trcbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+#########################
+# Changing radius to 40 #
+#########################
+
+# Start with BTC
+
+ret003<-as.data.frame(ret001[,2]) # BTC return as colour
+
+# Ball Mapper Plot
+
+cbm01<-BallMapper(ret002,ret003,40)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("btcbm0140.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+
+# Move to LTC
+
+ret003<-as.data.frame(ret001[,3]) # LTC return as colour
+cbm01<-BallMapper(ret002,ret003,40)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("ltcbm0140.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to NMC
+
+ret003<-as.data.frame(ret001[,4]) # NMC return as colour
+cbm01<-BallMapper(ret002,ret003,40)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("nmcbm0140.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to PPC
+
+ret003<-as.data.frame(ret001[,5]) # PPC return as colour
+cbm01<-BallMapper(ret002,ret003,40)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("ppcbm0140.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# Move to TRC
+
+ret003<-as.data.frame(ret001[,6]) # TRC return as colour
+cbm01<-BallMapper(ret002,ret003,40)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("trcbm0140.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+################################
+# Creating a time period dummy #
+################################]
+
+ret001$btc17<-as.numeric(ret001$date>as.Date("01-07-2017",format="%d-%m-%Y",origin="01-01-1970"))*as.numeric(ret001$date<as.Date("01-02-2018",format="%d-%m-%Y",origin="01-01-1970"))
+
+ret003<-as.data.frame(ret001$btc17) # BTC crash period
+
+# Ball Mapper Plot
+
+cbm01<-BallMapper(ret002,ret003,30)
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+
+png("btccrashbm0130.png")
+ColorIgraphPlot(cbm01,seed_for_plotting=123)
+dev.off()
+
+# We see half of ball 14 so let us query the dates
+
+ret00414<-subset(ret004,ret004$ball==14)
+
+ret00414$date
